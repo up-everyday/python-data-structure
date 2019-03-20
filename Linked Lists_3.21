@@ -41,27 +41,15 @@ class UnorderedList(object):
         current = self.head
         previous = None
         found = False
-        while not found:
+        while not found and current != None:
             if current.getData() == item:
                 found = True
             else:
                 previous = current
                 current = current.getNext()
+        if not found:
+            return
         if previous == None:
             self.head = current.getNext()
         else:
             previous.setNext(current.getNext())
-mylist = UnorderedList()
-mylist.add(31)
-mylist.add(77)
-mylist.add(17)
-mylist.add(93)
-mylist.add(26)
-mylist.add(54)
-print("size of mylist is ", mylist.size()) #6
-print("search result  mylist is ", mylist.search(17)) #True
-print("search result  mylist is ", mylist.search(100)) #false
-mylist.remove(17)
-print("remove 17  in mylist and size is %d" % mylist.size()) #5
-mylist.remove(54)
-print("remove 54  in mylist and size is %d" % mylist.size()) #5
