@@ -1,0 +1,39 @@
+from OrderedList_3.23 import OrderedList
+from OrderedList_3.23 import Node
+import unittest
+
+class TestNode(unittest.TestCase):
+    def setUp(self):
+        self.n = Node(93)
+    def test_getData(self):
+        self.assertEqual(self.n.getData(), 93)
+    def test_setData(self):
+        self.n.setData('abc')
+        self.assertEqual(self.n.getData(), 'abc')
+
+class TestOrderedList(unittest.TestCase):
+    def setUp(self):
+        self.mylist = OrderedList()
+        self.case_element = [31, 77, 17, 93, 26, 54]
+        for elem in self.case_element:
+            self.mylist.add(elem)
+    def test_add(self):
+        self.mylist.add(77)
+        self.assertEqual(self.mylist.size(), 7)
+    def test_size(self):
+        self.assertEqual(self.mylist.size(), 6)
+    def test_search(self):
+        #93 exist
+        self.assertEqual(self.mylist.search(93), True)
+        #100 non-exist
+        self.assertEqual(self.mylist.search(100), False)
+    def test_remove(self):
+        #17- exist
+        self.mylist.remove(17)
+        self.assertEqual(self.mylist.size(), 5)
+        self.assertEqual(self.mylist.search(17), False)
+        # 100- exist
+        self.mylist.remove(100)
+        self.assertEqual(self.mylist.size(), 5)
+if __name__ == '__main__':
+    unittest.main()
