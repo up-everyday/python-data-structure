@@ -20,7 +20,7 @@ class OrderedList(object):
         current = self.head
         previous = None
         stop = False
-        while current != None and not stop:
+        while not stop and current != None:
             if current.getData() > item:
                 stop = True
             else:
@@ -45,45 +45,34 @@ class OrderedList(object):
     def search(self, item):
         current = self.head
         found = False
-        stop = False
-        while current != None and not found and not stop:
+        while current != None and not found:
             if current.getData() == item:
                 found = True
             else:
-                if current.getData() > item:
-                    stop = True
-                else:
-                    print("current data is ", current.getData())
-                    current = current.getNext()
-
+                current = current.getNext()
         return found
     def remove(self, item):
         current = self.head
         previous = None
         found = False
-        while not found:
+        while not found and current != None:
             if current.getData() == item:
                 found = True
             else:
                 previous = current
                 current = current.getNext()
+        if not found:
+            return
         if previous == None:
             self.head = current.getNext()
         else:
             previous.setNext(current.getNext())
-mylist = OrderedList()
-
-mylist.add(31)
-mylist.add(77)
-mylist.add(17)
-mylist.add(93)
-mylist.add(26)
-mylist.add(54)
-
-print("size of mylist is ", mylist.size()) #6
-print("####search 26  mylist is ", mylist.search(26)) #True
-print("####search 55  mylist is ", mylist.search(55)) #false
-mylist.remove(17)
-print("remove 17  in mylist and size is %d" % mylist.size()) #5
-mylist.remove(54)
-print("remove 54  in mylist and size is %d" % mylist.size()) #5
+    def print_OrderedList(self):
+        current = self.head
+        list_data = []
+        while current != None:
+            value = current.getData()
+            list_data.append(value)
+            current = current.getNext()
+        print("list_data is ", list_data)
+        return list_data
