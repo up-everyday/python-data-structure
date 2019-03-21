@@ -1,5 +1,5 @@
-from OrderedList_3.23 import OrderedList
-from OrderedList_3.23 import Node
+from hello import OrderedList
+from hello import Node
 import unittest
 
 class TestNode(unittest.TestCase):
@@ -18,8 +18,8 @@ class TestOrderedList(unittest.TestCase):
         for elem in self.case_element:
             self.mylist.add(elem)
     def test_add(self):
-        self.mylist.add(77)
-        self.assertEqual(self.mylist.size(), 7)
+        list_dat = self.mylist.print_OrderedList()
+        self.assertListEqual(list_dat, [17,26,31,54,77,93])
     def test_size(self):
         self.assertEqual(self.mylist.size(), 6)
     def test_search(self):
