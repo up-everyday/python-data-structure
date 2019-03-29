@@ -1,0 +1,20 @@
+from hello import toStr
+import unittest
+
+class Test_toStr(unittest.TestCase):
+
+    def test_10to2_toStr(self):
+        result = toStr(10,2)
+        self.assertEqual(result, '1010')
+    def test_10to16_toStr(self):
+        result = toStr(1453,16)
+        self.assertEqual(result, '5AD')
+    def test_10to10_toStr(self):
+        result = toStr(769,10)
+        self.assertEqual(result, '769')
+    def test_less_base_toStr(self):
+        result = toStr(7,10)
+        self.assertEqual(result, '7')
+
+if __name__ == '__main__':
+    unittest.main()
