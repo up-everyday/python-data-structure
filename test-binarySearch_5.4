@@ -1,0 +1,21 @@
+from hello import binarySearch
+import unittest
+
+class Test_binarySearch(unittest.TestCase):
+    def setUp(self):
+        self.testlist = [0, 1, 2, 8, 13, 17, 19, 32, 42, ]
+    #exist
+    def test_exist_binarySearch(self):
+        result = binarySearch(self.testlist,8)
+        self.assertEqual(result, True)
+    def test_nonexist_binarySearch(self):
+        result = binarySearch(self.testlist, 35)
+        self.assertEqual(result, False)
+    def test_front_binarySearch(self):
+        result = binarySearch(self.testlist, 0)
+        self.assertEqual(result, True)
+    def test_rear_binarySearch(self):
+        result = binarySearch(self.testlist, 42)
+        self.assertEqual(result, True)
+if __name__ == '__main__':
+    unittest.main()
