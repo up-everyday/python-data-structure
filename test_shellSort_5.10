@@ -1,0 +1,11 @@
+from hello import shellSort
+import unittest
+
+class Test_shellSort(unittest.TestCase):
+    def test_insertionSort(self):
+        alist = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+        result = shellSort(alist)
+        self.assertListEqual(result, [17, 20, 26, 31, 44, 54, 55, 77, 93])
+
+if __name__ == '__main__':
+    unittest.main()
